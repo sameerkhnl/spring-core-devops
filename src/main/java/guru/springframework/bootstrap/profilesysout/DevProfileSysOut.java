@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Profile("dev")
 public class DevProfileSysOut {
     @Autowired
-    public DevProfileSysOut(@Value("${msg}") String msg) {
+    public DevProfileSysOut(@Value("${guru.msg}") String msg) {
         System.out.println("##################################");
         System.out.println("##################################");
         System.out.println("##              DEV             ##");
