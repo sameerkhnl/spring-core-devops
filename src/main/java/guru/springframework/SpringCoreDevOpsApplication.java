@@ -16,6 +16,7 @@ public class SpringCoreDevOpsApplication implements CommandLineRunner {
 
 		//this is my own whitespace test
 		//this is another of my own whitespace test
+		//third test
 
 	}
 
