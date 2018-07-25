@@ -24,6 +24,7 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/", "/index/**", "/product/**", "/checkout", "/docheckout").permitAll()
+                .and().authorizeRequests().antMatchers("/h2-console/**").permitAll()
                 .and().authorizeRequests().antMatchers("/login","logout").permitAll()
                 .and().authorizeRequests().antMatchers("/static/css/**","/js/**", "/images/**", "/**/favicon.ico").permitAll()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
@@ -32,7 +33,9 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
                         .invalidateHttpSession(true)
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/logout-success")
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-               ;
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 }
